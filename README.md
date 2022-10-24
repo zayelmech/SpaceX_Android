@@ -24,8 +24,8 @@ This project contains the following features
 
 * Normal phone
 <p align="center">
-  <img width="270" height="406" src="docs/images/normal-portrait.PNG">
-  <img width="514" height="406" src="docs/images/normal-landscape.PNG">
+  <img width="514" height="406" src="docs/images/normal-portrait.PNG">
+  <img width="400" height="406" src="docs/images/normal-landscape.PNG">
 </p>
 
 * Tablet

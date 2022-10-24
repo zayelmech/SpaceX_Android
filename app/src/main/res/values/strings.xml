@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SpaceX</string>
+    <string name="launch_image_description">launch patch image</string>
+    <string name="details_button">Go to Website</string>
+    <string name="web_site_btn_description">Open website</string>
+    <string name="more_details_label">More details</string>
+</resources>

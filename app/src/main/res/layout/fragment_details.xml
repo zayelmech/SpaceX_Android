@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.DetailsFragment">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <!-- Launch Detail Section -->
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="8dp"
+                    card_view:cardCornerRadius="10dp"
+                    card_view:cardElevation="5dp"
+                    card_view:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:orientation="vertical">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:id="@+id/launch_image"
+                                android:layout_width="128dp"
+                                android:layout_height="128dp"
+                                android:layout_marginTop="8dp"
+                                android:contentDescription="@string/launch_image_description"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:src="@drawable/astronaut" />
+
+                            <TextView
+                                android:id="@+id/mission_name"
+                                style="@style/LaunchDetailSectionName"
+                                android:gravity="center"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/launch_image"
+                                tools:text="FalconSat" />
+
+                            <TextView
+                                android:id="@+id/launch_success_label"
+                                style="@style/LaunchDetailHeaderSectionTitle"
+                                android:text="Success"
+                                app:layout_constraintEnd_toStartOf="@id/launch_year_label"
+                                app:layout_constraintHorizontal_chainStyle="spread"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/mission_name" />
+
+                            <TextView
+                                android:id="@+id/launch_year_label"
+                                style="@style/LaunchDetailHeaderSectionTitle"
+                                android:text="Year"
+                                app:layout_constraintEnd_toStartOf="@id/flight_number_label"
+                                app:layout_constraintStart_toEndOf="@id/launch_success_label"
+                                app:layout_constraintTop_toBottomOf="@id/mission_name" />
+
+                            <TextView
+                                android:id="@+id/flight_number_label"
+                                style="@style/LaunchDetailHeaderSectionTitle"
+                                android:text="Flight No."
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@id/launch_year_label"
+                                app:layout_constraintTop_toBottomOf="@id/mission_name" />
+
+                            <TextView
+                                android:id="@+id/launch_success"
+                                style="@style/LaunchDetailHeaderSectionBody"
+                                app:layout_constraintEnd_toEndOf="@id/launch_success_label"
+                                app:layout_constraintStart_toStartOf="@id/launch_success_label"
+                                app:layout_constraintTop_toBottomOf="@id/launch_success_label"
+                                tools:text="False" />
+
+                            <TextView
+                                android:id="@+id/launch_year"
+                                style="@style/LaunchDetailHeaderSectionBody"
+                                app:layout_constraintEnd_toEndOf="@id/launch_year_label"
+                                app:layout_constraintStart_toStartOf="@id/launch_year_label"
+                                app:layout_constraintTop_toBottomOf="@id/launch_year_label"
+                                tools:text="2006" />
+
+                            <TextView
+                                android:id="@+id/flight_number"
+                                style="@style/LaunchDetailHeaderSectionBody"
+                                app:layout_constraintEnd_toEndOf="@id/flight_number_label"
+                                app:layout_constraintStart_toStartOf="@id/flight_number_label"
+                                app:layout_constraintTop_toBottomOf="@id/flight_number_label"
+                                tools:text="1" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- Location & Rocket Sections -->
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/parentOrigin"
+                        style="@style/LaunchDetailLocationSectionCard"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/launch_detail_location_height"
+                        android:layout_marginStart="8dp"
+                        app:layout_constraintEnd_toStartOf="@+id/parentLocation"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        card_view:cardCornerRadius="10dp"
+                        card_view:cardElevation="5dp"
+                        card_view:cardUseCompatPadding="true">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="8dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/LaunchDetailSectionTitle"
+                                android:text="Rocket" />
+
+                            <TextView
+                                android:id="@+id/rocket_name"
+                                style="@style/LaunchDetailLocationSectionBody"
+                                tools:text="rocket" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/parentLocation"
+                        style="@style/LaunchDetailLocationSectionCard"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/launch_detail_location_height"
+                        android:layout_marginEnd="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/parentOrigin"
+                        app:layout_constraintTop_toTopOf="parent"
+                        card_view:cardCornerRadius="10dp"
+                        card_view:cardElevation="5dp"
+                        card_view:cardUseCompatPadding="true">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="8dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/LaunchDetailSectionTitle"
+                                android:text="Location" />
+
+                            <TextView
+                                android:id="@+id/launch_site_name"
+                                style="@style/LaunchDetailLocationSectionBody"
+                                tools:text="Kwajalein Atoll" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <!-- Episode List Section -->
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    card_view:cardCornerRadius="10dp"
+                    card_view:cardElevation="5dp"
+                    card_view:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/LaunchDetailSectionTitle"
+                            android:text="@string/more_details_label" />
+
+
+                        <TextView
+                            android:id="@+id/date_of_launch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:textAppearance="?attr/textAppearanceListItem"
+                            app:drawableStartCompat="@drawable/ic_baseline_date_range_24"
+                            tools:text="Falcon 1" />
+
+                        <TextView
+                            android:id="@+id/details"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:textAlignment="center"
+                            app:drawableStartCompat="@drawable/ic_baseline_near_me_24"
+                            android:textAppearance="?attr/textAppearanceListItem"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            tools:text="Some details here" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/website_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:contentDescription="@string/web_site_btn_description"
+            android:src="@drawable/ic_baseline_web_24"
+            app:backgroundTint="@color/colorAccent"
+            app:layout_anchor="@id/parent"
+            app:layout_anchorGravity="bottom|end"
+            app:tint="@android:color/white" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</FrameLayout>
