@@ -4,6 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import dagger.hilt.android.AndroidEntryPoint
 
+
+/**
+ * @author Abdiel Carreño
+ */
 //Hilt can provide dependencies to other Android classes that have the next annotation
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {

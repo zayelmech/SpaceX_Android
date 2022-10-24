@@ -1,18 +1,19 @@
 # SpaceX App Android
-With this application users can see all the launches from SpaceX API.
 
+With this application users can see all the launches from SpaceX API.
 
 ## User experience
 
 This project contains the following features
 
-* A list of launches from SpaceX API with aditional information
+* A list of launches from SpaceX API with additional information
     - Mission Name
     - Rocket Name
     - Launch Site Name
     - Date of Launch
     - Launch patch image, or default image when not provided by the API
-* Each summary item is clickable. When clicked the full mission details provided by the API is be displayed
+* Each summary item is clickable. When clicked the full mission details provided by the API is be
+  displayed
 
 ## Animation
 
@@ -22,18 +23,25 @@ This project contains the following features
 
 ## Screenshots
 
-* Normal phone
+* Normal phone (Portrait)
+
 <p align="center">
   <img width="514" height="406" src="docs/images/normal-portrait.PNG">
+</p>
+
+* Normal phone (Landscape)
+
+<p align="center">
   <img width="400" height="406" src="docs/images/normal-landscape.PNG">
 </p>
 
 * Tablet
+
 <p align="center">
   <img width="500" height="711" src="docs/images/tablet.png">
 </p>
 
-
+You might noticed I am using Sliding PaneLayout in order to display the Launch list and detail views in Master/Detail manner.
 
 ## Overview
 
@@ -42,6 +50,7 @@ This project contains the following features
 This project implements the SpaceX API. For more information visit https://docs.spacexdata.com/
 
 ### Architecture
+
 Using MVVM as the architectural pattern.
 
 ### Flow
@@ -64,4 +73,5 @@ This project use Hilt in order to perform dependency injection
 
 ## Copyright
 
-The open source API of SpaceX used in this project is provided by the following site: https://www.spacex.com/
+The open source API of SpaceX used in this project is provided by the following
+site: https://www.spacex.com/
