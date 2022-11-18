@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat.getColor
 import com.bumptech.glide.Glide
+import com.example.spacex.database.LaunchRoomEntity
 import com.example.spacex.databinding.FragmentItemLaunchBinding
 import com.example.spacex.model.LaunchesEntity
 
@@ -17,10 +18,10 @@ class LaunchesRecyclerViewAdapter(
     private val onCardClicked: (Int) -> Unit
 ) : RecyclerView.Adapter<LaunchesRecyclerViewAdapter.ViewHolder>() {
 
-    private val values: MutableList<LaunchesEntity> = mutableListOf()
+    private val values: MutableList<LaunchRoomEntity> = mutableListOf()
     private var itemSelectedNumber : Int = 0
 
-    fun setData(data: List<LaunchesEntity>) {
+    fun setData(data: List<LaunchRoomEntity>) {
 
         values.clear()
         values.addAll(data)
@@ -43,21 +44,21 @@ class LaunchesRecyclerViewAdapter(
 
         with(holder) {
             missionName.text = item.missionName
-            rocketName.text = item.rocket.rocketName
-            launchSiteName.text = item.launchSite.siteName
-            dateOfLaunch.text = item.launchDateUtc.split("T").first()
+            rocketName.text = item.rocketName
+            launchSiteName.text = item.site
+            dateOfLaunch.text = item.dateOfLaunch.split("T").first()
 
-            val url: String = item.links.missionPatchSmall
+            val url: String = item.imageUrl!!
 
-            if (item.flightNumber == itemSelectedNumber) {
+            if (item.launchNumber == itemSelectedNumber) {
                 itemView.setBackgroundColor(getColor(itemView.context, R.color.pink))
             } else {
                 itemView.setBackgroundColor(getColor(itemView.context, R.color.white))
             }
             itemView.setOnClickListener {
 
-                itemSelectedNumber = item.flightNumber
-                onCardClicked(item.flightNumber)
+                itemSelectedNumber = item.launchNumber!!
+                onCardClicked(item.launchNumber)
                 notifyDataSetChanged()
             }
             Glide.with(itemView)

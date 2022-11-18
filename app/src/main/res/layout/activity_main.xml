@@ -8,7 +8,7 @@
 <!--    Simple activity layout that contains a fragment container where the main fragment will be attached-->
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container"
-        android:name="com.example.spacex.views.LaunchFragment"
+        android:name="com.example.spacex.ui.views.LaunchFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"

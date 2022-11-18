@@ -63,4 +63,12 @@ dependencies {
     //sliding panel
     implementation "androidx.slidingpanelayout:slidingpanelayout:1.2.0"
 
+    // Room components
+    implementation "androidx.room:room-ktx:2.4.3"
+    kapt "androidx.room:room-compiler:2.4.3"
+    androidTestImplementation "androidx.room:room-testing:2.4.3"
+
+    //lifecycle
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
+
 }
