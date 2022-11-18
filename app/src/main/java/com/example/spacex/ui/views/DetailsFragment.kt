@@ -1,4 +1,4 @@
-package com.example.spacex.views
+package com.example.spacex.ui.views
 
 import android.content.Intent
 import android.net.Uri
@@ -8,8 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.example.spacex.R
+import com.example.spacex.database.LaunchRoomEntity
 import com.example.spacex.databinding.FragmentDetailsBinding
-import com.example.spacex.model.LaunchesEntity
 
 class DetailsFragment : BaseFragment() {
 
@@ -27,7 +27,12 @@ class DetailsFragment : BaseFragment() {
         //once the user select an item from the list, fillDetails will be called
         //and will draw the full details into every view
         viewModel.singleLaunch.observe(viewLifecycleOwner) { singleLaunch ->
-            fillDetails(singleLaunch)
+            if (singleLaunch != null) {
+                fillDetails(singleLaunch)
+            } else {
+
+
+            }
         }
 
 
@@ -39,28 +44,28 @@ class DetailsFragment : BaseFragment() {
      * that contains all the data from the API and draw
      * the data into different views
      */
-    private fun fillDetails(launch: LaunchesEntity) {
+    private fun fillDetails(launch: LaunchRoomEntity) {
         with(binding) {
 
             Glide.with(binding.root)
-                .load(launch.links.missionPatchSmall)
+                .load(launch.imageUrl)
                 .error(R.drawable.astronaut)
                 .into(binding.launchImage)
 
             missionName.text = launch.missionName
 
-            launchSuccess.text = launch.launchSuccess.toString()
-            launchYear.text =launch.launchYear
-            flightNumber.text = launch.flightNumber.toString()
+            launchSuccess.text = launch.success.toString()
+            launchYear.text = launch.year
+            flightNumber.text = launch.launchNumber.toString()
 
-            rocketName.text = launch.rocket.rocketName
-            launchSiteName.text = launch.launchSite.siteName
+            rocketName.text = launch.rocketName
+            launchSiteName.text = launch.site
 
-            dateOfLaunch.text = launch.launchDateUtc
+            dateOfLaunch.text = launch.dateOfLaunch
             details.text = launch.details
 
             websiteBtn.setOnClickListener {
-                val uri = Uri.parse(launch.links.articleLink)
+                val uri = Uri.parse(launch.website)
                 val intent = Intent(Intent.ACTION_VIEW, uri)
                 startActivity(intent)
             }

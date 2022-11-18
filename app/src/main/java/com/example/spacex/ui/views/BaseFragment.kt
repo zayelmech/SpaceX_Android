@@ -1,8 +1,8 @@
-package com.example.spacex.views
+package com.example.spacex.ui.views
 
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.spacex.viewmodel.LaunchesViewModel
+import com.example.spacex.ui.viewmodel.LaunchesViewModel
 
 /**It's a Fragment class that works as a parent fragment
  * then all fragments will have these common elements,
