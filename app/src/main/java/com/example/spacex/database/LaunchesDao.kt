@@ -18,7 +18,7 @@ interface LaunchesDao {
      *  the database is updated.
      */
     @Query("SELECT * FROM spacex_table ORDER BY launchNumber ")
-    suspend fun getAllLaunches(): List<LaunchRoomEntity>
+    fun getAllLaunches(): Flow<List<LaunchRoomEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertNewLaunch(launch: LaunchRoomEntity)

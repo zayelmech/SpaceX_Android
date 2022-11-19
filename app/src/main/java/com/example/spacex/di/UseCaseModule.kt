@@ -2,7 +2,8 @@ package com.example.spacex.di
 
 import com.example.spacex.database.LocalDatabaseRepository
 import com.example.spacex.network.Repository
-import com.example.spacex.GetAllLaunchesUseCase
+import com.example.spacex.usecases.GetAllLaunchesUseCase
+import com.example.spacex.usecases.UpdateAllLaunchesUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,9 +15,16 @@ class UseCaseModule {
 
     @Provides
     fun getAllLaunchesUseCase(
-        remoteRepository: Repository,
         localDatabaseRepository: LocalDatabaseRepository
     ): GetAllLaunchesUseCase {
-        return GetAllLaunchesUseCase(remoteRepository, localDatabaseRepository)
+        return GetAllLaunchesUseCase(localDatabaseRepository)
+    }
+
+    @Provides
+    fun updateAllLaunchesUseCase(
+        remoteRepository: Repository,
+        localDatabaseRepository: LocalDatabaseRepository
+    ): UpdateAllLaunchesUseCase {
+        return UpdateAllLaunchesUseCase(remoteRepository, localDatabaseRepository)
     }
 }

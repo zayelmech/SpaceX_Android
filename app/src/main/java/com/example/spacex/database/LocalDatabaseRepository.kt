@@ -1,11 +1,12 @@
 package com.example.spacex.database
 
 import androidx.annotation.WorkerThread
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 
 interface LocalDatabaseRepository {
-    suspend fun getLaunches(): List<LaunchRoomEntity>
+    fun getLaunches(): Flow<List<LaunchRoomEntity>>
     suspend fun insert(launchRoomEntity: LaunchRoomEntity)
     suspend fun updateLaunches(launches: List<LaunchRoomEntity>)
 }
@@ -15,19 +16,10 @@ class LocalDatabaseRepositoryImpl @Inject constructor(
     private val launchesDao: LaunchesDao
 ) : LocalDatabaseRepository {
 
+    // Room executes all queries on a separate thread.
+    // Observed Flow will notify the observer when the data has changed.
 
-    override suspend fun getLaunches(): List<LaunchRoomEntity> {
-
-//        val remoteList = spacexService.getLaunches()
-//        if (remoteList.isSuccessful) {
-//            remoteList.body()?.forEach { launchesEntity ->
-//                localDatabaseDao.insertNewLaunch(launchesEntity.toRoomEntity())
-//            }
-//
-//        }
-
-        return launchesDao.getAllLaunches()
-    }
+    override fun getLaunches(): Flow<List<LaunchRoomEntity>> = launchesDao.getAllLaunches()
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread

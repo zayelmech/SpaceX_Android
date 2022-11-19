@@ -14,7 +14,7 @@ import com.example.spacex.LaunchesRecyclerViewAdapter
 import com.example.spacex.R
 import com.example.spacex.database.LaunchRoomEntity
 import com.example.spacex.databinding.FragmentLaunchesListBinding
-import com.example.spacex.ui.LaunchesUiState
+import com.example.spacex.ui.UpdateUiState
 import com.example.spacex.utils.LaunchesListOnBackPressedCallback
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.launch
@@ -49,6 +49,7 @@ class LaunchFragment : BaseFragment() {
         }
 
 
+
         viewModel.getLaunchesFromApi()
         // I am calling a function from the viewModel to get a list that I will observe
         //once the list get all the data from the API,
@@ -75,46 +76,37 @@ class LaunchFragment : BaseFragment() {
         //The above code uses addCallback(), passing in the viewLifecycleOwner and an instance of
         //LaunchesListOnBackPressedCallback. This callback is only active during the fragment's life cycle.
 
-//        viewModel.launchesList.observe(viewLifecycleOwner) { launchesList ->
-//            if (launchesList != null) {
-//                recyclerViewAdapter.setData(launchesList)
-//                viewModel.launchWasSelected(1)//for larger screen I will set and show the details from the first element by default
-//            } else {
-//                context?.let {
-//                    MaterialAlertDialogBuilder(it)
-//                        .setTitle("ERROR")
-//                        .setMessage(resources.getString(R.string.error_null_singlelaunch))
-//                        .setPositiveButton(resources.getString(R.string.retry)) { dialog, which ->
-//                            // Respond to positive button press
-//                            viewModel.getLaunchesFromApi()
-//                        }
-//                        .show()
-//                }
-//            }
-//        }
+        viewModel.launchesList.observe(viewLifecycleOwner) { launchesList ->
+            if (launchesList != null) {
+                showLaunches(launchesList)
+            } else {
+                showError(Throwable("Local data is empty"))
+            }
+        }
+
 
         // Start a coroutine in the lifecycle scope
         viewLifecycleOwner.lifecycleScope.launch {
             // repeatOnLifecycle launches the block in a new coroutine every time the
             // lifecycle is in the STARTED state (or above) and cancels it when it's STOPPED.
             repeatOnLifecycle(Lifecycle.State.STARTED) {
+
+
                 viewModel.uiState.collect { uiState ->
                     when (uiState) {
-                        is LaunchesUiState.Success -> {
+                        is UpdateUiState.Success -> {
                             binding.progressBar.visibility = View.GONE
-                            showLaunches(uiState.launches)
                         }
-                        is LaunchesUiState.Error -> {
+                        is UpdateUiState.Error -> {
                             binding.progressBar.visibility = View.GONE
                             showError(uiState.exception)
                         }
-                        is LaunchesUiState.Loading -> binding.progressBar.visibility = View.VISIBLE
+                        is UpdateUiState.Loading -> binding.progressBar.visibility = View.VISIBLE
 
                         else -> {
                             Log.e("TAG", "onViewCreated: Well you know ")
                         }
                     }
-
 
                 }
 
