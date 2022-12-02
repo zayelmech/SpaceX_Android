@@ -48,7 +48,7 @@ class LaunchesRecyclerViewAdapter(
             launchSiteName.text = item.site
             dateOfLaunch.text = item.dateOfLaunch.split("T").first()
 
-            val url: String = item.imageUrl!!
+            val url: String = item.imageUrl?: ""
 
             if (item.launchNumber == itemSelectedNumber) {
                 itemView.setBackgroundColor(getColor(itemView.context, R.color.pink))
