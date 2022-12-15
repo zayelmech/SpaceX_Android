@@ -1,10 +1,11 @@
 package com.example.spacex.ui.viewmodel
 
 import androidx.lifecycle.*
-import com.example.spacex.usecases.GetAllLaunchesUseCase
-import com.example.spacex.database.LaunchRoomEntity
-import com.example.spacex.usecases.UpdateAllLaunchesUseCase
+import com.imecatro.domain.launches.usecases.GetAllLaunchesUseCase
+import com.imecatro.data.room.model.LaunchRoomEntity
+import com.imecatro.domain.launches.usecases.UpdateAllLaunchesUseCase
 import com.example.spacex.ui.UpdateUiState
+import com.imecatro.domain.launches.model.LaunchDomainModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -17,15 +18,15 @@ import javax.inject.Inject
 @HiltViewModel
 class LaunchesViewModel @Inject constructor(
     private val getAllLaunchesUseCase: GetAllLaunchesUseCase,
-    private val updateAllLaunchesUseCase: UpdateAllLaunchesUseCase,
+    private val updateAllLaunchesUseCase:UpdateAllLaunchesUseCase,
 ) : ViewModel() {
 
     //LiveData is an observable data holder class
     //private val _launchesList: MutableLiveData<List<LaunchRoomEntity>?> = MutableLiveData()
-    val launchesList: LiveData<List<LaunchRoomEntity>> = getAllLaunchesUseCase().asLiveData()
+    val launchesList: LiveData<List<LaunchDomainModel>> = getAllLaunchesUseCase().asLiveData()
 
-    private val _singleLaunch: MutableLiveData<LaunchRoomEntity?> = MutableLiveData()
-    val singleLaunch: LiveData<LaunchRoomEntity?> get() = _singleLaunch
+    private val _singleLaunch: MutableLiveData<LaunchDomainModel?> = MutableLiveData()
+    val singleLaunch: LiveData<LaunchDomainModel?> get() = _singleLaunch
 
     // Backing property to avoid state updates from other classes
     private val _uiState: MutableStateFlow<UpdateUiState?> =
@@ -51,7 +52,7 @@ class LaunchesViewModel @Inject constructor(
         }
     }
 
-    private fun getDetailsOf(n: Int): LaunchRoomEntity? {
+    private fun getDetailsOf(n: Int): LaunchDomainModel? {
 
         return launchesList.value?.find { singleEntity ->
             singleEntity.launchNumber == n

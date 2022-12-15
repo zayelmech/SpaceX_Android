@@ -16,28 +16,6 @@
 
     <!--Custom styles-->
 
-    <style name="LaunchGridItemImage">
-        <item name="android:layout_height">@dimen/launch_list_item_size</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:scaleType">centerCrop</item>
-    </style>
-
-    <style name="LaunchListItemName">
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_width">0dp</item>
-        <item name="android:background">@color/colorTransparentAccent</item>
-        <item name="android:gravity">center_horizontal</item>
-        <item name="android:maxLines">1</item>
-        <item name="android:padding">4dp</item>
-        <item name="android:textColor">@android:color/white</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="FavoriteListItemName" parent="LaunchListItemName">
-        <item name="android:background">@color/colorTransparentFavorite</item>
-    </style>
-
     <style name="LaunchDetailSectionTitle">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
@@ -80,21 +58,4 @@
         <item name="android:maxLines">3</item>
     </style>
 
-    <style name="MaterialAlertDialog.App" parent="MaterialAlertDialog.Material3">
-        <item name="shapeAppearance">@style/ShapeAppearance.App.MediumComponent</item>
-        <item name="shapeAppearanceOverlay">@null</item>
-    </style>
-
-    <style name="MaterialAlertDialog.App.Title.Text" parent="MaterialAlertDialog.Material3.Title.Text">
-        <item name="android:textColor">@color/shrine_pink_900</item>
-    </style>
-
-    <style name="Widget.App.Button" parent="Widget.Material3.Button.TextButton.Dialog">
-        <item name="android:textColor">@color/shrine_pink_900</item>
-    </style>
-
-    <style name="ShapeAppearance.App.MediumComponent" parent="ShapeAppearance.Material3.MediumComponent">
-        <item name="cornerFamily">cut</item>
-        <item name="cornerSize">8dp</item>
-    </style>
 </resources>

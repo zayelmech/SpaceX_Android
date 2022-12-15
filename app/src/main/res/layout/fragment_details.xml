@@ -89,7 +89,7 @@
                                 app:layout_constraintTop_toBottomOf="@id/mission_name" />
 
                             <TextView
-                                android:id="@+id/launch_success"
+                                android:id="@+id/launchSuccess"
                                 style="@style/LaunchDetailHeaderSectionBody"
                                 app:layout_constraintEnd_toEndOf="@id/launch_success_label"
                                 app:layout_constraintStart_toStartOf="@id/launch_success_label"
@@ -97,7 +97,7 @@
                                 tools:text="False" />
 
                             <TextView
-                                android:id="@+id/launch_year"
+                                android:id="@+id/launchYear"
                                 style="@style/LaunchDetailHeaderSectionBody"
                                 app:layout_constraintEnd_toEndOf="@id/launch_year_label"
                                 app:layout_constraintStart_toStartOf="@id/launch_year_label"
@@ -105,7 +105,7 @@
                                 tools:text="2006" />
 
                             <TextView
-                                android:id="@+id/flight_number"
+                                android:id="@+id/flightNumber"
                                 style="@style/LaunchDetailHeaderSectionBody"
                                 app:layout_constraintEnd_toEndOf="@id/flight_number_label"
                                 app:layout_constraintStart_toStartOf="@id/flight_number_label"
@@ -212,7 +212,7 @@
 
 
                         <TextView
-                            android:id="@+id/date_of_launch"
+                            android:id="@+id/dateOfLaunch"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
@@ -241,7 +241,7 @@
         </androidx.core.widget.NestedScrollView>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/website_btn"
+            android:id="@+id/websiteBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"

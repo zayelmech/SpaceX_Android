@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="text_margin">16dp</dimen>
     <dimen name="launch_detail_location_height">108dp</dimen>
-    <dimen name="launch_list_item_size">160dp</dimen>
-    <dimen name="list_item_padding">12dp</dimen>
 </resources>

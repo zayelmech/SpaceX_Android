@@ -12,11 +12,12 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.slidingpanelayout.widget.SlidingPaneLayout
 import com.example.spacex.LaunchesRecyclerViewAdapter
 import com.example.spacex.R
-import com.example.spacex.database.LaunchRoomEntity
+import com.imecatro.data.room.model.LaunchRoomEntity
 import com.example.spacex.databinding.FragmentLaunchesListBinding
 import com.example.spacex.ui.UpdateUiState
 import com.example.spacex.utils.LaunchesListOnBackPressedCallback
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.imecatro.domain.launches.model.LaunchDomainModel
 import kotlinx.coroutines.launch
 
 /**
@@ -130,7 +131,7 @@ class LaunchFragment : BaseFragment() {
         }
     }
 
-    private fun showLaunches(launches: List<LaunchRoomEntity>) {
+    private fun showLaunches(launches: List<LaunchDomainModel>) {
         recyclerViewAdapter.setData(launches)
         viewModel.launchWasSelected(1)//for larger screen I will set and show the details from the first element by default
     }

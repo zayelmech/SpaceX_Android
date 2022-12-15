@@ -1,13 +1,12 @@
 package com.example.spacex.di
 
-import com.example.spacex.database.LocalDatabaseRepository
-import com.example.spacex.database.LocalDatabaseRepositoryImpl
-import com.example.spacex.network.Repository
-import com.example.spacex.network.RepositoryImp
+import com.imecatro.data.room.LocalDatabaseRepositoryImpl
+import com.imecatro.data.network.RepositoryImp
+import com.imecatro.domain.launches.repository.LocalRepository
+import com.imecatro.domain.launches.repository.RemoteRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.components.SingletonComponent
 
 @Module
@@ -17,10 +16,10 @@ abstract class RepositoryModule {
     @Binds
     abstract fun providesRemoteRepository(
         repositoryImp: RepositoryImp
-    ): Repository
+    ): RemoteRepository
 
     @Binds
     abstract fun provideLocalRepository(
         localDatabaseRepositoryImpl: LocalDatabaseRepositoryImpl
-    ): LocalDatabaseRepository
+    ): LocalRepository
 }

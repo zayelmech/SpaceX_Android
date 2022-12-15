@@ -7,9 +7,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat.getColor
 import com.bumptech.glide.Glide
-import com.example.spacex.database.LaunchRoomEntity
+import com.imecatro.data.room.model.LaunchRoomEntity
 import com.example.spacex.databinding.FragmentItemLaunchBinding
-import com.example.spacex.model.LaunchesEntity
+import com.imecatro.domain.launches.model.LaunchDomainModel
 
 /**
  * [RecyclerView.Adapter] that can display a [List].
@@ -18,10 +18,10 @@ class LaunchesRecyclerViewAdapter(
     private val onCardClicked: (Int) -> Unit
 ) : RecyclerView.Adapter<LaunchesRecyclerViewAdapter.ViewHolder>() {
 
-    private val values: MutableList<LaunchRoomEntity> = mutableListOf()
+    private val values: MutableList<LaunchDomainModel> = mutableListOf()
     private var itemSelectedNumber : Int = 0
 
-    fun setData(data: List<LaunchRoomEntity>) {
+    fun setData(data: List<LaunchDomainModel>) {
 
         values.clear()
         values.addAll(data)
@@ -46,7 +46,7 @@ class LaunchesRecyclerViewAdapter(
             missionName.text = item.missionName
             rocketName.text = item.rocketName
             launchSiteName.text = item.site
-            dateOfLaunch.text = item.dateOfLaunch.split("T").first()
+            dateOfLaunch.text = item.dateOfLaunch?.split("T")?.first()
 
             val url: String = item.imageUrl?: ""
 
@@ -58,7 +58,7 @@ class LaunchesRecyclerViewAdapter(
             itemView.setOnClickListener {
 
                 itemSelectedNumber = item.launchNumber!!
-                onCardClicked(item.launchNumber)
+                onCardClicked(item.launchNumber!!)
                 notifyDataSetChanged()
             }
             Glide.with(itemView)
@@ -78,7 +78,7 @@ class LaunchesRecyclerViewAdapter(
         val missionName: TextView = binding.missionName
         val rocketName: TextView = binding.rocketName
         val launchSiteName: TextView = binding.launchSiteName
-        val dateOfLaunch: TextView = binding.dateOfLaunch
+        val dateOfLaunch: TextView = binding.date
         val launchImage: ImageView = binding.launchImage
 
     }

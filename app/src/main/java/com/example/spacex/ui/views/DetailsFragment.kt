@@ -8,8 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.example.spacex.R
-import com.example.spacex.database.LaunchRoomEntity
+import com.imecatro.data.room.model.LaunchRoomEntity
 import com.example.spacex.databinding.FragmentDetailsBinding
+import com.imecatro.domain.launches.model.LaunchDomainModel
 
 class DetailsFragment : BaseFragment() {
 
@@ -44,7 +45,7 @@ class DetailsFragment : BaseFragment() {
      * that contains all the data from the API and draw
      * the data into different views
      */
-    private fun fillDetails(launch: LaunchRoomEntity) {
+    private fun fillDetails(launch: LaunchDomainModel) {
         with(binding) {
 
             Glide.with(binding.root)
